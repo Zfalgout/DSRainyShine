@@ -62,8 +62,46 @@ class Forecast {
             }
             
             //Stopped at 22 minutes in.  About to start with the max temp.
+            
+            if let max = temp["max"] as? Double {
+                
+                let kelvinToFarenheitPreDiv = (max * (9/5) - 459.67)
+                
+                let kelvinToFarhenheit = Double(round(10 * kelvinToFarenheitPreDiv/10))
+                
+                self._highTemp = "\(kelvinToFarhenheit)"
+            }
+            
         }
+        
+        if let weather = weatherDict["weather"] as? [Dictionary<String,AnyObject>] {
+            if let main = weather[0]["main"] as? String {
+                self._weatherType = main
+            }
+        }
+        
+        if let date = weatherDict["dt"] as? Double {
+            
+            let unixConvertedDate = Date(timeIntervalSince1970: date)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .full
+            dateFormatter.dateFormat = "EEEE"
+            dateFormatter.timeStyle = .none
+            self._date = unixConvertedDate.dayOfTheWeek()
+            
+        }
+        
     }
     
     
+}
+
+extension Date {
+    func dayOfTheWeek() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        
+        return dateFormatter.string(from: self)
+    }
 }

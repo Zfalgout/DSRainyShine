@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rainy Shine/CurrentWeather.swift"
-            timestampString = "517780379.949151"
+            timestampString = "517874851.4076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "downloadWeatherDetails(completed:)"
             landmarkType = "7">
          </BreakpointContent>
